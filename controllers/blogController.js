@@ -1,13 +1,23 @@
 // importo i dati dei post
 const postsArr = require('./../data/postsArr');
-const postsList = require('./../data/postsArr');
+
 
 function index(req, res) {
  
+   //inizialmente, il blog filtrato corrisponde a quello originale
+   let filteredPost = postsArr; 
+   
+   //se la richiesta contiene un filtro, allora filtro l'array
+   if(req.query.tags) {
+    filteredPost = postsArr.filter(
+        blog => blog.tags.includes(req.query.tags)
+    ); 
+   }
+
  //creo un nuovo oggetto con le propr che mi servono
  const oggettoBlog = {
     numeroPost : postsArr.length,
-    listaPost : postsArr
+    listaPost : filteredPost
  }
     res.json(oggettoBlog);
 }
