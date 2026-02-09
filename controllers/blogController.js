@@ -14,8 +14,14 @@ function index(req, res) {
 
 function show(req, res) {
 
- res.send('Dettagli del post con id ' + req.params.id); 
+ //recupero l'id e lo trasformo in numero
+ const idNum = parseInt(req.params.id) 
 
+ //cerco il post tramite id
+ const post = postsArr.find(blog => blog.id === idNum)
+
+ //restituisco sotto forma di JSON 
+ res.json(post)
 }
 
 function store(req, res) {
@@ -32,7 +38,17 @@ res.send('Modifica del post con id ' + req.params.id);
 
 function destroy(req, res) {
 
-res.send('Eliminazione del post ' + req.params.id);
+//recupero l'id e lo trasformo in numero
+ const idNum = parseInt(req.params.id) ;
+
+  //cerco il post tramite id
+ const post = postsArr.find(blog => blog.id === idNum)
+
+ //rimuovo il post dal blog 
+postsArr.splice(postsArr.indexOf(post), 1);
+
+//risposta 
+res.sendStatus(204);
 
 }
 
