@@ -1,8 +1,15 @@
 // importo i dati dei post
+const postsArr = require('./../data/postsArr');
 const postsList = require('./../data/postsArr');
 
 function index(req, res) {
- res.json(postsList);
+ 
+ //creo un nuovo oggetto con le propr che mi servono
+ const oggettoBlog = {
+    numeroPost : postsArr.length,
+    listaPost : postsArr
+ }
+    res.json(oggettoBlog);
 }
 
 function show(req, res) {
