@@ -69,7 +69,7 @@ function store(req, res) {
 
     //restituisco stato created e il nuovo post
     res.status(201);
-    res.json(newPost); 
+    res.json(newPost);
 
 }
 
@@ -112,7 +112,9 @@ function update(req, res) {
 //modifica parziale del post PATCH
 function modify(req, res) {
 
-   
+    //campi che possono essere modificati 
+    const propEditabili = ["title", "content", "image", "tags"];
+
     //recupero l'id e lo trasformo in numero ( il parametro dinamico)
     const idNum = parseInt(req.params.id)
 
@@ -132,11 +134,22 @@ function modify(req, res) {
     }
 
     //aggiorniamo il post in base al campo inserito
- 
-    req.body.title ? post.title = req.body.title : post.title = post.title;
-    req.body.content ? post.content = req.body.content : post.content = post.content;
-    req.body.image ? post.image = req.body.image : post.image = post.image;
-    req.body.tags ? post.tags = req.body.tags : post.tags = post.tags;
+
+    //iterazione su ogni campo editabile
+    propEditabili.forEach((prop) => {
+
+      // se il campo è presenta nel body della richiesta
+        if(req.body[prop] !== undefined) {
+
+         //aggiorno la proprietà 
+         //equivale a es post.title = req.body.title    
+        post[prop] = req.body[prop];
+        }
+    })
+    // req.body.title ? post.title = req.body.title : post.title = post.title;
+    // req.body.content ? post.content = req.body.content : post.content = post.content;
+    // req.body.image ? post.image = req.body.image : post.image = post.image;
+    // req.body.tags ? post.tags = req.body.tags : post.tags = post.tags;
 
 
     //restituisamo il post aggiornato
