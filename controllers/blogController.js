@@ -49,26 +49,27 @@ function show(req, res) {
 
 function store(req, res) {
 
-    // //const newId = Date.now();
-    // //creo un id 
-    // const newId = postsArr[postsArr.length - 1].id + 1;
+    //const newId = Date.now();
+    //creo un id 
+    const newId = postsArr[postsArr.length - 1].id + 1;
 
-    // //creiamo nuovo oggetto post
-    // const newPost = {
+    //creiamo nuovo oggetto post
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+    }
 
-    //     id: newId,
-    //     title: req.body.title,
-    //     content: req.body.content,
-    //     image: req.body.image,
-    //     tags: req.body.tags
+    //aggiungo il nuovo post al blog
+    postsArr.push(newPost);
 
-    // }
+    console.log(postsArr);
 
-    // //aggiungiamo il nuovo post al blog
-    // postsArr.push(newPost);
-
-    // console.log(postsArr);
-
+    //restituisco stato created e il nuovo post
+    res.status(201);
+    res.json(newPost); 
 
 }
 
