@@ -10,7 +10,7 @@ const router = express.Router();
 const blogController = require('./../controllers/blogController')
 
 
-// rotta GET /posts
+// rotta GET 
 router.get('/',blogController.index);
 
 //inizio crud 
@@ -25,7 +25,7 @@ router.post('/',blogController.store);
 router.put('/:id', blogController.update);
 
 // MODIFY
-router.patch('/:id', blogController.update);
+router.patch('/:id', blogController.modify);
 
 // DELETE
 router.delete('/:id', blogController.destroy);

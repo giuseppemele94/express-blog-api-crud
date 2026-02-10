@@ -2,6 +2,7 @@
 const postsArr = require('./../data/postsArr');
 
 
+
 function index(req, res) {
 
     //inizialmente, il blog filtrato corrisponde a quello originale
@@ -24,7 +25,7 @@ function index(req, res) {
 
 function show(req, res) {
 
-    //recupero l'id e lo trasformo in numero
+    //recupero l'id e lo trasformo in numero ( il parametro dinamico)
     const idNum = parseInt(req.params.id)
 
     //cerco il post tramite id
@@ -48,13 +49,102 @@ function show(req, res) {
 
 function store(req, res) {
 
-    res.send('Creazione nuovo post');
+    // //const newId = Date.now();
+    // //creo un id 
+    // const newId = postsArr[postsArr.length - 1].id + 1;
+
+    // //creiamo nuovo oggetto post
+    // const newPost = {
+
+    //     id: newId,
+    //     title: req.body.title,
+    //     content: req.body.content,
+    //     image: req.body.image,
+    //     tags: req.body.tags
+
+    // }
+
+    // //aggiungiamo il nuovo post al blog
+    // postsArr.push(newPost);
+
+    // console.log(postsArr);
+
 
 }
 
+
 function update(req, res) {
 
-    res.send('Modifica del post con id ' + req.params.id);
+
+    // //recupero l'id e lo trasformo in numero ( il parametro dinamico)
+    // const idNum = parseInt(req.params.id)
+
+    // //cerco il post tramite id
+    // const post = postsArr.find(blog => blog.id === idNum);
+
+    // //controllo se trova l'item
+    // if (!post) {
+
+    //     res.status(404);
+
+    //     //risposta con messaggio di eerrore
+    //     return res.json({
+    //         error: "Not found",
+    //         message: "Post non trovato"
+    //     })
+    // }
+
+    // //aggiorniamo il post 
+    // post.title = req.body.title;
+    // post.content = req.body.content;
+    // post.image = req.body.image;
+    // post.tags = req.body.tags;
+
+    // //controlliamo il blog
+    // console.log(postsArr);
+
+    // //restituisamo il post aggiornato
+    // res.json(post);
+
+}
+
+//modifica parziale del post
+function modify(req, res) {
+
+    // res.send('Modifica parziale del post con id ' + req.params.id);
+    // //recupero l'id e lo trasformo in numero ( il parametro dinamico)
+    // const idNum = parseInt(req.params.id)
+
+    // //cerco il post tramite id
+    // const post = postsArr.find(blog => blog.id === idNum);
+
+    // //controllo se trova l'item
+    // if (!post) {
+
+    //     res.status(404);
+
+    //     //risposta con messaggio di eerrore
+    //     return res.json({
+    //         error: "Not found",
+    //         message: "Post non trovato"
+    //     })
+    // }
+
+    // //aggiorniamo il post in base al campo inserito
+    // // if(req.body.title) {
+    // //     post.title = req.body.title;
+    // // }
+    // req.body.title ? post.title = req.body.title : post.title = post.title;
+    // req.body.content ? post.title = req.body.content : post.content = post.content;
+    // req.body.image ? post.image = req.body.image : post.image = post.image;
+    // req.body.tags ? post.tags = req.body.tags : post.tags = post.tags;
+
+
+    // //controlliamo il blog
+    // console.log(postsArr);
+
+    // //restituisamo il post aggiornato
+    // res.json(post);
 
 }
 
@@ -86,4 +176,4 @@ function destroy(req, res) {
 }
 
 // esportiamo tutto
-module.exports = { index, show, store, update, destroy }
+module.exports = { index, show, store, update, modify, destroy }
