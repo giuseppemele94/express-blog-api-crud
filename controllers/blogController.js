@@ -112,40 +112,35 @@ function update(req, res) {
 //modifica parziale del post PATCH
 function modify(req, res) {
 
-    // res.send('Modifica parziale del post con id ' + req.params.id);
-    // //recupero l'id e lo trasformo in numero ( il parametro dinamico)
-    // const idNum = parseInt(req.params.id)
+   
+    //recupero l'id e lo trasformo in numero ( il parametro dinamico)
+    const idNum = parseInt(req.params.id)
 
-    // //cerco il post tramite id
-    // const post = postsArr.find(blog => blog.id === idNum);
+    //cerco il post tramite id
+    const post = postsArr.find(blog => blog.id === idNum);
 
-    // //controllo se trova l'item
-    // if (!post) {
+    //controllo se trova l'item
+    if (!post) {
 
-    //     res.status(404);
+        res.status(404);
 
-    //     //risposta con messaggio di eerrore
-    //     return res.json({
-    //         error: "Not found",
-    //         message: "Post non trovato"
-    //     })
-    // }
+        //risposta con messaggio di eerrore
+        return res.json({
+            error: "Not found",
+            message: "Post non trovato"
+        })
+    }
 
-    // //aggiorniamo il post in base al campo inserito
-    // // if(req.body.title) {
-    // //     post.title = req.body.title;
-    // // }
-    // req.body.title ? post.title = req.body.title : post.title = post.title;
-    // req.body.content ? post.title = req.body.content : post.content = post.content;
-    // req.body.image ? post.image = req.body.image : post.image = post.image;
-    // req.body.tags ? post.tags = req.body.tags : post.tags = post.tags;
+    //aggiorniamo il post in base al campo inserito
+ 
+    req.body.title ? post.title = req.body.title : post.title = post.title;
+    req.body.content ? post.content = req.body.content : post.content = post.content;
+    req.body.image ? post.image = req.body.image : post.image = post.image;
+    req.body.tags ? post.tags = req.body.tags : post.tags = post.tags;
 
 
-    // //controlliamo il blog
-    // console.log(postsArr);
-
-    // //restituisamo il post aggiornato
-    // res.json(post);
+    //restituisamo il post aggiornato
+    res.json(post);
 
 }
 
