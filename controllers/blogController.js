@@ -46,7 +46,7 @@ function show(req, res) {
     //restituisco sotto forma di JSON 
     res.json(post)
 }
-
+//CREATE
 function store(req, res) {
 
     //const newId = Date.now();
@@ -73,43 +73,43 @@ function store(req, res) {
 
 }
 
-
+//modifica totale PUT 
 function update(req, res) {
 
 
-    // //recupero l'id e lo trasformo in numero ( il parametro dinamico)
-    // const idNum = parseInt(req.params.id)
+    //recupero l'id e lo trasformo in numero ( il parametro dinamico)
+    const idNum = parseInt(req.params.id)
 
-    // //cerco il post tramite id
-    // const post = postsArr.find(blog => blog.id === idNum);
+    //cerco il post tramite id
+    const post = postsArr.find(blog => blog.id === idNum);
 
-    // //controllo se trova l'item
-    // if (!post) {
+    //controllo se trova l'item
+    if (!post) {
 
-    //     res.status(404);
+        res.status(404);
 
-    //     //risposta con messaggio di eerrore
-    //     return res.json({
-    //         error: "Not found",
-    //         message: "Post non trovato"
-    //     })
-    // }
+        //risposta con messaggio di eerrore
+        return res.json({
+            error: "Not found",
+            message: "Post non trovato"
+        })
+    }
 
-    // //aggiorniamo il post 
-    // post.title = req.body.title;
-    // post.content = req.body.content;
-    // post.image = req.body.image;
-    // post.tags = req.body.tags;
+    //aggiorniamo il post 
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
 
-    // //controlliamo il blog
-    // console.log(postsArr);
+    //controlliamo il post
+    console.log(postsArr);
 
-    // //restituisamo il post aggiornato
-    // res.json(post);
+    //restituisamo il post aggiornato
+    res.json(post);
 
 }
 
-//modifica parziale del post
+//modifica parziale del post PATCH
 function modify(req, res) {
 
     // res.send('Modifica parziale del post con id ' + req.params.id);
