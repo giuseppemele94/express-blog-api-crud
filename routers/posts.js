@@ -22,10 +22,10 @@ router.get('/:id', blogController.show);
 // CREATE ( STORE)
 router.post('/',blogController.store);
 
-// UPDATE
+// UPDATE totale
 router.put('/:id', blogController.update);
 
-// MODIFY
+// MODIFY totale
 router.patch('/:id', blogController.modify);
 
 // DELETE

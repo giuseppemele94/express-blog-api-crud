@@ -140,7 +140,6 @@ function modify(req, res) {
 
       // se il campo è presenta nel body della richiesta
         if(req.body[prop] !== undefined) {
-
          //aggiorno la proprietà 
          //equivale a es post.title = req.body.title    
         post[prop] = req.body[prop];
