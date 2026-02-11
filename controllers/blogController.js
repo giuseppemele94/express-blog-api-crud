@@ -28,6 +28,9 @@ function show(req, res) {
     //recupero l'id e lo trasformo in numero ( il parametro dinamico)
     const idNum = parseInt(req.params.id)
 
+    // introduciamo un errore a caso per test middelware err 500
+     //throw new Error("Errore di test middleware");
+
     //cerco il post tramite id
     const post = postsArr.find(blog => blog.id === idNum);
 

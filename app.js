@@ -11,6 +11,9 @@ const blogsRouter = require('./routers/posts')
 // import del middelware di gestione di rotta inesistente
 const notFound = require("./middlewares/notFound");
 
+// import del middelware di gestione errore interno 500
+const errorsHandler = require("./middlewares/errorsHandler");
+
 app.use(express.static('public'));
 
 //rotta Home App
@@ -21,8 +24,13 @@ app.get('/', (req,res) => {
 // istanza delle rotte per risorsa  post
 app.use("/posts", blogsRouter); 
 
+
 // registriamo middelware di gestione rotta inesistente
 app.use(notFound);
+
+// registriamo middelware di gestione err 500
+app.use(errorsHandler);
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
